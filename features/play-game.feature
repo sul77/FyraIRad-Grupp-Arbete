@@ -13,3 +13,8 @@ Feature: Play Connect 4
   Scenario: A board adds 42 divs to the .board element
     Given that a new Board is created
     Then it should render 42 divs as children of the board element
+
+  Scenario: A red player makes a move
+    Given that red player makes a move
+    Then the board shall have a bricka on its board
+    and I should get a message that red player has played.
