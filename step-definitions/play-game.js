@@ -5,6 +5,7 @@ require('./_include-all')();
 module.exports = function () {
 
   let game;
+  let board;
 
   this.Given(/^that a new Game is created$/, function () {
     game = new Game();
