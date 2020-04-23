@@ -5,6 +5,7 @@ require('./_include-all')();
 module.exports = function () {
 
   let game;
+  let board;
 
   this.Given(/^that a new Game is created$/, function () {
     game = new Game();
@@ -30,4 +31,10 @@ module.exports = function () {
     );
   });
 
+  this.Given(/^that red player makes a move$/, function () {
+    let makeaMove = false;
+    expect(game.board).to.equal(currentPlayer + 1, ' the board should have a bricka on its board'
+    );
+    makeaMove = false;
+  });
 }
