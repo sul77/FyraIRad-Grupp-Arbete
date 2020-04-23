@@ -1,28 +1,12 @@
 class Board {
+    
     constructor(game) {
-        this.ROWS = 6;
-        this.COLS = 7;
-        this.currentPlayer = 1;
-        this.playInProgress = false;
-        this.createGrid();
-        this.game = game;
-    }
-
-    createGrid() {
-        const $board = $(this.game);
-
-        for (let row = 0; row < this.ROWS; row++) {
-            const $row = $('<div>').addClass('row');
-            $board.append($row);
-            for (let col = 0; col < this.COLS; col++)
-                const $col = $('<div').addClass('col empty');
-            $row.append($col);
+        if (!game instanceof Game) {
+            throw console.error("game must be an instance of Game");
         }
-        $board.append($row);
-        console.log($board.html());
-    }
-
-    constructor(game) {
+        //this.ROWS = 6;    //Kept in comment until Approval of Thomas
+        //this.COLS = 7;    //Kept in comment until Approval of Thomas
+        //this.createGrid(); //Kept in comment until Approval of Thomas
         this.game = game;
         this.matrix = [
             [0, 0, 0, 0, 0, 0, 0],
@@ -40,7 +24,46 @@ class Board {
         //not done -- missing tellTurn from Game
     }
 
-    async makeMove(column) {}
+    /* //Keep within comment until approval of Thomas
+    createGrid() {
+        const $board = $(this.game);
+
+        for (let row = 0; row < this.ROWS; row++) {
+            const $row = $('<div>').addClass('row');
+            $board.append($row);
+            for (let col = 0; col < this.COLS; col++)
+                const $col = $('<div').addClass('col empty');
+            $row.append($col);
+        }
+        $board.append($row);
+        console.log($board.html());
+    }
+    */
+
+    async makeMove(column){
+        if (column < 0 || column > 6 || column % 1 != 0) {      //If column is less than 0, greater than 6, and or column is not an integer
+            throw console.error("column must be an integer between 0 and 6");
+        }
+
+        if (this.playInProgress = true) {
+            return null;
+        }
+
+        /*  not done 
+        //Check if chosen column is full in matrix (We know if it is empty by looking if it the element is 0 and not 1 or 2)
+        for (let i = 0; i <= this.matrix.length; i++){
+            
+            for ()
+            
+            if (this.matrix[i] == column && column === 0) {
+
+            }
+        }
+        */
+
+       this.playInProgress = true;
+        
+    }
 
     wincCheck() {}
 
