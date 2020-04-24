@@ -17,4 +17,4 @@ Feature: Play Connect 4
   Scenario: A red player makes a move
     Given that red player makes a move
     Then the board shall have a bricka on its board
-    and I should get a message that red player has played.
+    And I should get a message that red player has played.
