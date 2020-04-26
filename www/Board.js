@@ -1,5 +1,5 @@
 class Board {
-    
+
     constructor(game) {
         if (!game instanceof Game) {
             throw console.error("game must be an instance of Game");
@@ -40,7 +40,7 @@ class Board {
     }
     */
 
-    async makeMove(column){
+    async makeMove(column) {
         if (column < 0 || column > 6 || column % 1 != 0) {      //If column is less than 0, greater than 6, and or column is not an integer
             throw console.error("column must be an integer between 0 and 6");
         }
@@ -49,31 +49,48 @@ class Board {
             return null;
         }
 
-        /*  not done 
-        //Check if chosen column is full in matrix (We know if it is empty by looking if it the element is 0 and not 1 or 2)
-        for (let i = 0; i <= this.matrix.length; i++){
-            
-            for ()
-            
-            if (this.matrix[i] == column && column === 0) {
 
+
+        //Check if chosen column is full in matrix (We know if it is empty by looking if it the element is 0 and not 1 or 2)
+        for (let i = 0; i < this.matrix.length; i++) {
+
+            if (this.matrix[i][column] === 0) {
+                this.matrix[i][column] = this.currentPlayer;
+
+                //Anropa metoden render
+                this.render();
+
+                //Pausa i 50 ms
+                await.sleep(50);
+
+                //Ta bort brickan om den kan falla längre ner
             }
         }
-        */
 
-       this.playInProgress = true;
-        
+        //anropa metoden winCheck
+        let winCheck = this.wincCheck();
+        if (winCheck) {
+            this.removeEventListener();
+            if (winCheck.combo) {
+                this.markWin(winCheck.combo)
+            }
+            this.game.over(winCheck.winner):
+            return true;
+        }
+
+        this.playInProgress = true;
+
     }
 
-    wincCheck() {}
+    wincCheck() { }
 
-    render() {}
+    render() { }
 
-    markWin(combo) {}
+    markWin(combo) { }
 
-    addEventListener() {}
+    addEventListener() { }
 
-    removeEventListener() {}
+    removeEventListener() { }
 
 }
 
