@@ -21,7 +21,7 @@ class Board {
 
         this.addEventListener();
         this.render();
-        this.tellTurn();
+        this.game.tellTurn(this.currentPlayer);
         //not done -- missing tellTurn from Game
     }
 
