@@ -74,8 +74,8 @@ class Board {
             if (winCheck.combo) {
                 this.markWin(winCheck.combo)
             }
-            this.game.over(winCheck.winner):
-                return true;
+            this.game.over(winCheck.winner);
+            return true;
         }
 
         this.playInProgress = true;
@@ -135,7 +135,7 @@ class Board {
     render() {
         let divOne = document.createElement("div");
         let divSecond = document.createElement("div");
-        secondDiv.appendChild(divOne)
+        divSecond.appendChild(divOne)
         board.appendChild(divSecond)
         $('body').append(board);
     }
