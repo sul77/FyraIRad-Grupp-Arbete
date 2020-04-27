@@ -3,7 +3,7 @@ class Game {
     constructor() {
         this.addEventListener();
         this.start();
-        this.tellTurn(player)
+        this.game.tellTurn(this.currentPlayer);
         this.over(won)
     }
 
