@@ -61,7 +61,7 @@ class Board {
                 this.render();
 
                 //Pausa i 50 ms
-                await.sleep(50);
+                await sleep(50);
 
                 //Ta bort brickan om den kan falla längre ner
             }
