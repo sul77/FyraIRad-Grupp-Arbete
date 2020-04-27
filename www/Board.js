@@ -134,9 +134,9 @@ class Board {
 
     render() {
         let divOne = document.createElement("div");
-        let divSecond = document.createElement("div");
-        divSecond.appendChild(divOne)
-        board.appendChild(divSecond)
+        let divTwo = document.createElement("div");
+        divTwo.appendChild(divOne)
+        board.appendChild(divTwo)
         $('body').append(board);
     }
 
