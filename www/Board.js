@@ -1,8 +1,8 @@
 class Board {
 
     constructor(game) {
-        if (!game instanceof Game) {
-            throw console.error("game must be an instance of Game");
+        if (!(game instanceof Game)) {
+            throw (new Error('game must be an instance of Game'));
         }
         //this.ROWS = 6;    //Kept in comment until Approval of Thomas
         //this.COLS = 7;    //Kept in comment until Approval of Thomas
