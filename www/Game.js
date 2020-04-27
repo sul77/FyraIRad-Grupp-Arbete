@@ -3,6 +3,8 @@ class Game {
     constructor() {
         this.addEventListener();
         this.start();
+        this.tellTurn(player)
+        this.over(won)
     }
 
     start() {
