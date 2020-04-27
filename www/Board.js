@@ -41,7 +41,7 @@ class Board {
     */
 
     async makeMove(column) {
-        if (column < 0 || column > 6 || column % 1 != 0) {      //If column is less than 0, greater than 6, and or column is not an integer
+        if (column < 0 || column > 6 || column % 1 != 0) { //If column is less than 0, greater than 6, and or column is not an integer
             throw console.error("column must be an integer between 0 and 6");
         }
 
@@ -75,7 +75,7 @@ class Board {
                 this.markWin(winCheck.combo)
             }
             this.game.over(winCheck.winner):
-            return true;
+                return true;
         }
 
         this.playInProgress = true;
@@ -85,17 +85,37 @@ class Board {
     //winCheck metod    
     wincCheck() {
         let winOffset = [
-            [[0, 0], [0, 1], [0, 2], [0, 3]], // horizontal
-            [[0, 0], [1, 0], [2, 0], [3, 0]], // vertical
-            [[0, 0], [1, 1], [2, 2], [3, 3]], // diagonal
-            [[0, 0], [1, -1], [2, -2], [3, -3]] // diagonal
+            [
+                [0, 0],
+                [0, 1],
+                [0, 2],
+                [0, 3]
+            ], // horizontal
+            [
+                [0, 0],
+                [1, 0],
+                [2, 0],
+                [3, 0]
+            ], // vertical
+            [
+                [0, 0],
+                [1, 1],
+                [2, 2],
+                [3, 3]
+            ], // diagonal
+            [
+                [0, 0],
+                [1, -1],
+                [2, -2],
+                [3, -3]
+            ] // diagonal
         ];
 
         for (let row = 0; row < 6; row++) {
             for (let col = 0; col < 7; col++) {
                 for (let w of winOffset) {
-                    let slots = w.map(([r, c]) => this.matrix[row + r]
-                        && this.matrix[row + r][col + c]).join('');
+                    let slots = w.map(([r, c]) => this.matrix[row + r] &&
+                        this.matrix[row + r][col + c]).join('');
 
 
 
@@ -112,13 +132,19 @@ class Board {
 
     }
 
-    render() { }
+    render() {
+        let divOne = document.createElement("div");
+        let divSecond = document.createElement("div");
+        secondDiv.appendChild(divOne)
+        board.appendChild(divSecond)
+        $('body').append(board);
+    }
 
-    markWin(combo) { }
+    markWin(combo) {}
 
-    addEventListener() { }
+    addEventListener() {}
 
-    removeEventListener() { }
+    removeEventListener() {}
 
 }
 
