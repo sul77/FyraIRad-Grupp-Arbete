@@ -141,11 +141,23 @@ class Board {
         $('body').append(board);
     }
 
-    markWin(combo) {}
+    markWin(combo) { }
 
-    addEventListener() {}
+    addEventListener() {
+        this.listener = event => {
+            let $slot = event.target.closest('.board > div  ');
+            if (!$slot) { return; }
+            let $allSlots = [...$$('.board > div')];
+            let index = $allSlots.indexOf($slot);
+            let selectedColumn = index % 7;
+            this.makeMove(selectedColumn);
+        };
+        $('.board').addEventListener('click', this.listener);
+    }
 
-    removeEventListener() {}
+    removeEventListener() {
+        $('.board').removeEventListener('click', this.listener);
+    }
 
 }
 
