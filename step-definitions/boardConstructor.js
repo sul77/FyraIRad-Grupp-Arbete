@@ -8,35 +8,68 @@ module.exports = function () {
   let game;
   let board;
 
-  this.Given(/^that a new Game is created$/, function () {
-    // 
-    game = new Game();
-    board = new Board();
+  //When a new Board is created
+  this.When(/^a new Board is created$/, function () {
+    //game = new Game();
+    //board = new Board(game);
   });
 
-  this.Then(/^a board is created$/, function () {
-    expect(game.board).to.be.an.instanceof(Board,
-      'game.board is not an instance of Board'
-    );
+  //Then the game parameter from Game should be an instance of Game
+  this.Then(/^the game parameter from Game should an instance of Game$/, function () {
+    //game = new Game();
+    //board = new Board(game);
+    //expect(board.game).to.be.an.instanceof(Game, 'board.game is not an instance of board');
   });
 
-  this.Then(/^the board should be empty as a beginning(\d+)$/, function () {
+  //And incase game is not an instance of Game; then error "game must be an instance of Game" should be thrown
+  this.Then(/^incase game is not an instance of Game; then error "([^"]*)" should be thrown$/, function (errorMessageThrown) {
+    expect(function () {
+      //inside this function the test will expect  code that throws an error in order for the test to pass
+      //In this case creating an instance of board without an instance of game to it should throw an error
+      // choosing to test by sending generic object to the constructor
+      new Board({});
+    }).to.throw(
+      Error,
+      errorMessageThrown,
+      'The Board constructor did not throw an error when trying to make an instance of board without sending a game to it. '
+      )
+  });
+
+  //And all values in the matrix grid should be set to zero
+  this.Then(/^all values in the matrix grid should be set to zero$/, function () {
+    new Board();
     expect(board.matrix).to.deep.equal([
-      //the board has positions to a value of 0
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0]
-    ])
+  ])
   });
 
-  this.Then(/^currentPlayer should be set to a value of 0 (\d+)$/, function (value) {
-    expect(board.currentPlayer).to.deep.equal(1)
+  //And currentPlayer should have the initial value 1
+  this.Then(/^currentPlayer should have the initial value (\d+)$/, function (currentPlayer) {
+    expect(board.currentPlayer).to.deep.equal(1, 'currentPlayer is not set to 1');
   });
 
-  this.Then(/^playInProgress should be set to a value of false (\d+)$/, function (value) {
-    expect(board.currentPlayer).to.deep.equal(false)
+  //And playInProgress should have the initial value false
+  this.Then(/^playInProgress should have the initial value false$/, function () {
+    expect(board.playInProgress).to.be.false;
+  });
+
+  //And method AddEvenListener() should be called upon
+  this.Then(/^method addEventListener\(\) should be called upon$/, function () {
+    
+  });
+
+  //And method render() should be called upon afterwards
+  this.Then(/^method render\(\) should be called upon afterwards$/, function () {
+    
+  });
+  
+  //And  then the method tellTurn() with inagrument currentPlayer from game should be called upon
+  this.Then(/^then the method tellTurn\(\) with inargument currentPlayer from game should be called upon$/, function () {
+    
   });
 }
