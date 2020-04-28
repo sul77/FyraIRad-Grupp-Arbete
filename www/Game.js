@@ -12,8 +12,14 @@ class Game {
     }
     tellTurn(player) {}
     over(won) {}
-    addEventListener() {
 
+    addEventListener() {
+        let self = this;
+        $('.message').addEventListener("click", function(e) {
+            if (e.target.className == 'again') {
+                self.start();
+            }
+        });
     }
 
 }

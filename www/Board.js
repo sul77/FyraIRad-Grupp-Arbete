@@ -43,7 +43,7 @@ class Board {
 
     async makeMove(column) {
         if (column < 0 || column > 6 || column % 1 != 0) { //If column is less than 0, greater than 6, and or column is not an integer
-            throw console.error("column must be an integer between 0 and 6");
+            throw new Error("column must be an integer between 0 and 6");
         }
 
         if (this.playInProgress = true) {
@@ -141,7 +141,7 @@ class Board {
         $('body').append(board);
     }
 
-    markWin(combo) { }
+    markWin(combo) {}
 
     addEventListener() {
         this.listener = event => {
