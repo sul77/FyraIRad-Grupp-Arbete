@@ -68,6 +68,7 @@ class Board {
             }
         }
 
+
         //anropa metoden winCheck
         let winCheck = this.wincCheck();
         if (winCheck) {
@@ -80,6 +81,7 @@ class Board {
         }
 
         this.playInProgress = true;
+
 
     }
 
@@ -146,7 +148,9 @@ class Board {
     addEventListener() {
         this.listener = event => {
             let $slot = event.target.closest('.board > div  ');
-            if (!$slot) { return; }
+            if (!$slot) {
+                return;
+            }
             let $allSlots = [...$$('.board > div')];
             let index = $allSlots.indexOf($slot);
             let selectedColumn = index % 7;
