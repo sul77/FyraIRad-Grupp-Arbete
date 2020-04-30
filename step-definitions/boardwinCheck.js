@@ -7,6 +7,10 @@ module.exports = function () {
 
   let game;
   let board;
+  let objectToReturn = {};
+  let currentPlayer;
+  let player1;
+  let player2;
 
   //Given that a new Board is created
   this.Given(/^that a board has been created$/, function () {
@@ -20,11 +24,14 @@ module.exports = function () {
 
   //Then winCheck() method should return an object
   this.Then(/^winCheck method should return an object$/, function () {
+    objectToReturn;
+    currentPlayer = player1;
 
   });
 
   //And the object should contain the property 'winner' with the value set to the winner (1 or 2)
   this.Then(/^the object should contain the property "([^"]*)" with the value set to the winner \((\d+) or (\d+)\)$/, function (propertyWinner, player1, player2) {
+    objectToReturn.winner = currentPlayer;
 
   });
 
@@ -40,14 +47,14 @@ module.exports = function () {
 
   //Then winCheck() should return an object
   this.Then(/^winCheck method should return an object$/, function () {
- 
+
   });
 
   //And the object should contain the property 'winner' with the value set to string 'draw'
   this.Then(/^the object should contain the property "([^"]*)" with the value set to string "([^"]*)"$/, function (propertyWinner, valueDraw) {
 
   });
-  
+
   //When neither of the players has won
   this.When(/^neither of the players has won$/, function () {
 
