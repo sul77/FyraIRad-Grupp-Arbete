@@ -136,11 +136,18 @@ class Board {
     }
 
     render() {
-        let divOne = document.createElement("div");
-        let divTwo = document.createElement("div");
-        divTwo.appendChild(divOne)
-        board.appendChild(divTwo)
-        $('body').append(board);
+        let board = document.createElement("div");
+        board.className = 'board';
+        for (let row = 0; row < 6; row++) {
+            for (let col = 0; col < 7; col++) {
+                let firstDiv = document.createElement("div");
+                let secondDiv = document.createElement("div");
+                secondDiv.appendChild(firstDiv);
+                board.appendChild(secondDiv);
+                $('body').append(board);
+            }
+
+        }
     }
 
     markWin(combo) {}
