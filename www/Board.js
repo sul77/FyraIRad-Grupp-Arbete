@@ -42,30 +42,40 @@ class Board {
     */
 
     async makeMove(column) {
-        if (column < 0 || column > 6 || column % 1 != 0) { //If column is less than 0, greater than 6, and or column is not an integer
-            throw new Error("column must be an integer between 0 and 6");
+        if (column < 0 || column > 6 || column % 1 != 0) {
+            throw console.error("column must be an integer between 0 and 6");
         }
 
-        if (this.playInProgress = true) {
+        if (this.playInProgress === true) {
             return null;
         }
 
+        let noEmptySpace = true;
 
-
-        //Check if chosen column is full in matrix (We know if it is empty by looking if it the element is 0 and not 1 or 2)
         for (let i = 0; i < this.matrix.length; i++) {
-
             if (this.matrix[i][column] === 0) {
+                if (i > 0) {
+                    this.matrix[i - 1][column] = 0;
+                }
                 this.matrix[i][column] = this.currentPlayer;
 
-                //Anropa metoden render
-                this.render();
-
-                //Pausa i 50 ms
-                await sleep(50);
-
-                //Ta bort brickan om den kan falla längre ner
+                this.playInProgress = true;
+                noEmptySpace = false;
             }
+        }
+
+        if (!noEmptySpace) {
+            this.render();
+            await sleep(50);
+            this.playInProgress = false;
+            this.game.tellTurn(this.currentPlayer);
+            if (this.currentPlayer == 1) {
+                this.currentPlayer = 2;
+            } else {
+                this.currentPlayer = 1;
+            }
+        } else {
+            return false;
         }
 
 
