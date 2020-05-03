@@ -88,49 +88,46 @@ class Board {
     //winCheck metod    
     wincCheck() {
         let winOffset = [
-            [
-                [0, 0],
-                [0, 1],
-                [0, 2],
-                [0, 3]
-            ], // horizontal
-            [
-                [0, 0],
-                [1, 0],
-                [2, 0],
-                [3, 0]
-            ], // vertical
-            [
-                [0, 0],
-                [1, 1],
-                [2, 2],
-                [3, 3]
-            ], // diagonal
-            [
-                [0, 0],
-                [1, -1],
-                [2, -2],
-                [3, -3]
-            ] // diagonal
+            [[0, 0], [0, 1], [0, 2], [0, 3]], // horizontal  
+            [[0, 0], [1, 0], [2, 0], [3, 0]], // vertical     
+            [[0, 0], [1, 1], [2, 2], [3, 3]], // diagonal1
+            [[0, 0], [1, -1], [2, -2], [3, -3]] // diagonal2
         ];
+        //declare count moves
+        let c = 0;
+        //declare a combo array, an array of 4 arrays
+        let rArray = [];
+        //declare a win or draw object
+        let wdCheck = {};
 
         for (let row = 0; row < 6; row++) {
             for (let col = 0; col < 7; col++) {
                 for (let w of winOffset) {
                     let slots = w.map(([r, c]) => this.matrix[row + r] &&
                         this.matrix[row + r][col + c]).join('');
+                    this.matrix.flatMap(s => s !== 0 ? c++ : '');
 
-
-
+                    //When one of the two players has won
                     if (slots === '1111' || slots === '2222') {
-                        return +slots[0];
-
+                        let w2;
+                        for (w2 in w) {
+                            winningCombo.push([row + w2[0], col + w2[1]]);
+                        }
+                        return wdCheck = {
+                            combo: rArray, winner: +slots[0]
+                        }
+                    }
+                    //when moves reach the max and no wins have been found
+                    else if (slots === '1111' && slots === '2222' && c === 42) {
+                        return wdCheck = {
+                            winner: 'draw'
+                        }
                     }
 
-                    //Saknas en del att skriva
                 }
             }
         }
+        //When no one wins, and the game was not a draw
         return false;
 
     }
@@ -150,7 +147,7 @@ class Board {
         }
     }
 
-    markWin(combo) {}
+    markWin(combo) { }
 
     addEventListener() {
         this.listener = event => {
