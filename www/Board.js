@@ -15,14 +15,14 @@ class Board {
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0]
-        ]
+        ];
         this.currentPlayer = 1;
         this.playInProgress = false;
 
         this.addEventListener();
         this.render();
         this.game.tellTurn(this.currentPlayer);
-        //not done -- missing tellTurn from Game
+
     }
 
     /* //Keep within comment until approval of Thomas
@@ -102,7 +102,7 @@ class Board {
 
         for (let row = 0; row < 6; row++) {
             for (let col = 0; col < 7; col++) {
-                for (let w of winOffset) {
+                for (w in winOffset) {
                     let slots = w.map(([r, c]) => this.matrix[row + r] &&
                         this.matrix[row + r][col + c]).join('');
                     this.matrix.flatMap(s => s !== 0 ? c++ : '');
@@ -147,7 +147,16 @@ class Board {
         }
     }
 
-    markWin(combo) { }
+    markWin(combo) {
+
+        for (w in combo) {
+            //check which tray corresponds to a position
+            let p = (w[0] * 7) + (w[1] + 1);
+            //add the tray to win class
+            let mp = $(".board > div: nth - child(" + p + ")");
+            mp.classList.add('win');
+        }
+    }
 
     addEventListener() {
         this.listener = event => {
@@ -170,6 +179,4 @@ class Board {
 }
 
 // make it possible to test on backend
-if (typeof global !== 'undefined') {
-    global.Board = Board
-};
+if (typeof global !== 'undefined') { global.Board = Board };
