@@ -10,8 +10,41 @@ class Game {
     start() {
         this.board = new Board(this);
     }
-    tellTurn(player) {}
-    over(won) {}
+    tellTurn(player) {
+
+        if (player < 1 || player > 2 || player % 1 != 0){
+            throw (new Error("player must be 1 or 2"));
+        }
+        if (player === 1) {
+            $('.message').textContent = "Röds tur...";
+        }
+        if (player === 2) {
+            $('.message').textContent = "Guls tur...";
+        }
+        
+    }
+    over(won) {
+
+        if (won < 1 || won > 2 || won != "draw") {
+            throw (new Error('won must be "draw", 1 or 2'));
+        }
+        if (won = "draw") {
+            $('.message').textContent = "Det blev oavgjort!";
+        }
+        if (won === 1) {
+            $('.message').textContent = "Röd vann!";
+        }
+        if (won === 2) {
+            $('.message').textContent = "Gul vann!";
+        }
+        /*
+        let btn = document.createElement('button');
+        btn.className = 'again';
+        btn.textContent = 'Spela igen';
+        btn.setAttribute('type', 'button');
+        $('.message').appendChild(btn);
+        */ //Not done, finishing later
+    }
 
     addEventListener() {
         let self = this;
