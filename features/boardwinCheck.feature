@@ -14,11 +14,11 @@ Feature: Check who won or if it was a draw
 
   Scenario: Game ended in a draw
     When neither of the players has won
-    Then winCheck method should return an object
+    Then the winCheck method should return an object
     And the object should contain the property "winner" with the value set to string "draw"
   
 
   Scenario: No winner no draw
-    When neither of the players has won
+    When neither of players has won
     And neither has it been a draw
     Then wincCheck method should return false
