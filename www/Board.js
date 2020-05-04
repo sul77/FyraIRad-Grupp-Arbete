@@ -51,6 +51,7 @@ class Board {
         }
 
         let noEmptySpace = true;
+        this.playInProgress = true;
 
         for (let i = 0; i < this.matrix.length; i++) {
             if (this.matrix[i][column] === 0) {
@@ -64,10 +65,10 @@ class Board {
             }
         }
 
+        this.playInProgress = false;
         if (!noEmptySpace) {
             this.render();
             await sleep(50);
-            this.playInProgress = false;
             this.game.tellTurn(this.currentPlayer);
             if (this.currentPlayer == 1) {
                 this.currentPlayer = 2;
@@ -89,6 +90,7 @@ class Board {
             this.game.over(winCheck.winner);
             return true;
         }
+
 
 
     }
@@ -130,7 +132,7 @@ class Board {
 
         for (let row = 0; row < 6; row++) {
             for (let col = 0; col < 7; col++) {
-                for (w in winOffset) {
+                for (let w of winOffset) {
                     let slots = w.map(([r, c]) => this.matrix[row + r] &&
                         this.matrix[row + r][col + c]).join('');
                     this.matrix.flatMap(s => s !== 0 ? c++ : '');
@@ -162,6 +164,7 @@ class Board {
     }
 
     render() {
+        $('.board').remove();
         let board = document.createElement("div");
         board.className = 'board';
         for (let row = 0; row < 6; row++) {
@@ -171,6 +174,12 @@ class Board {
                 secondDiv.appendChild(firstDiv);
                 board.appendChild(secondDiv);
                 $('body').append(board);
+
+                if (this.matrix[row][col] === 1) {
+                    firstDiv.style.backgroundColor = "red";
+                } else if (this.matrix[row][col] === 2) {
+                    firstDiv.style.backgroundColor = "yellow";
+                }
             }
 
         }
@@ -198,11 +207,11 @@ class Board {
             let selectedColumn = index % 7;
             this.makeMove(selectedColumn);
         };
-        $('.board').addEventListener('click', this.listener);
+        document.addEventListener('click', this.listener);
     }
 
     removeEventListener() {
-        $('.board').removeEventListener('click', this.listener);
+        document.removeEventListener('click', this.listener);
     }
 
 }
