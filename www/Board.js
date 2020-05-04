@@ -141,7 +141,7 @@ class Board {
                     if (slots === '1111' || slots === '2222') {
                         let w2;
                         for (w2 in w) {
-                            winningCombo.push([row + w2[0], col + w2[1]]);
+                            rArray.push([row + w2[0], col + w2[1]]);
                         }
                         return wdCheck = {
                             combo: rArray,
@@ -187,12 +187,10 @@ class Board {
 
     markWin(combo) {
 
-        for (w in combo) {
+        for (let w of combo) {
             //check which tray corresponds to a position
-            let p = (w[0] * 7) + (w[1] + 1);
-            //add the tray to win class
-            let mp = $(".board > div: nth - child(" + p + ")");
-            mp.classList.add('win');
+            //and add it to win class
+            $(".board > div:nth-child(" + ((w[0] * 7) + (w[1] + 1)) + ")").classList.add('w');
         }
     }
 
