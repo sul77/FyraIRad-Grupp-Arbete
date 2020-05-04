@@ -46,7 +46,7 @@ module.exports = function () {
   });
 
   //Then winCheck() should return an object
-  this.Then(/^winCheck method should return an object$/, function () {
+  this.Then(/^the winCheck method should return an object$/, function () {
 
   });
 
@@ -56,7 +56,7 @@ module.exports = function () {
   });
 
   //When neither of the players has won
-  this.When(/^neither of the players has won$/, function () {
+  this.When(/^neither of players has won$/, function () {
 
   });
 
