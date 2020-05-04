@@ -90,18 +90,36 @@ class Board {
             return true;
         }
 
-        this.playInProgress = true;
-
 
     }
 
     //winCheck metod    
     wincCheck() {
         let winOffset = [
-            [[0, 0], [0, 1], [0, 2], [0, 3]], // horizontal  
-            [[0, 0], [1, 0], [2, 0], [3, 0]], // vertical     
-            [[0, 0], [1, 1], [2, 2], [3, 3]], // diagonal1
-            [[0, 0], [1, -1], [2, -2], [3, -3]] // diagonal2
+            [
+                [0, 0],
+                [0, 1],
+                [0, 2],
+                [0, 3]
+            ], // horizontal  
+            [
+                [0, 0],
+                [1, 0],
+                [2, 0],
+                [3, 0]
+            ], // vertical     
+            [
+                [0, 0],
+                [1, 1],
+                [2, 2],
+                [3, 3]
+            ], // diagonal1
+            [
+                [0, 0],
+                [1, -1],
+                [2, -2],
+                [3, -3]
+            ] // diagonal2
         ];
         //declare count moves
         let c = 0;
@@ -124,7 +142,8 @@ class Board {
                             winningCombo.push([row + w2[0], col + w2[1]]);
                         }
                         return wdCheck = {
-                            combo: rArray, winner: +slots[0]
+                            combo: rArray,
+                            winner: +slots[0]
                         }
                     }
                     //when moves reach the max and no wins have been found
@@ -189,4 +208,6 @@ class Board {
 }
 
 // make it possible to test on backend
-if (typeof global !== 'undefined') { global.Board = Board };
+if (typeof global !== 'undefined') {
+    global.Board = Board
+};

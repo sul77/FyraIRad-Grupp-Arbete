@@ -3,26 +3,24 @@ class Game {
     constructor() {
         this.addEventListener();
         this.start();
-        this.tellTurn(player)
-        this.over(won)
     }
 
     start() {
-            this.board = new Board(this);
-        }
-        /* tellTurn(player) {
+        this.board = new Board(this);
+    }
+    tellTurn(player) {
 
-             if (player < 1 || player > 2 || player % 1 != 0){
-                 throw (new Error("player must be 1 or 2"));
-             }
-             if (player === 1) {
-                 $('.message').textContent = "Röds tur...";
-             }
-             if (player === 2) {
-                 $('.message').textContent = "Guls tur...";
-             }
-             
-         }*/
+        if (player < 1 || player > 2 || player % 1 != 0) {
+            throw (new Error("player must be 1 or 2"));
+        }
+        if (player === 1) {
+            $('.message').textContent = "Röds tur...";
+        }
+        if (player === 2) {
+            $('.message').textContent = "Guls tur...";
+        }
+
+    }
 
     tellTurn(player) {
         if (player !== 1 && player !== 2) {
@@ -35,6 +33,7 @@ class Game {
             "...";
 
     }
+
     over(won) {
 
         if (won < 1 || won > 2 || won != "draw") {
