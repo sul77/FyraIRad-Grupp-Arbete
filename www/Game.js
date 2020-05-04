@@ -10,20 +10,21 @@ class Game {
     start() {
             this.board = new Board(this);
         }
-        /* tellTurn(player) {
+        
+    tellTurn(player) {
+    	
+        if (player < 1 || player > 2 || player % 1 != 0){
+            throw (new Error("player must be 1 or 2"));
+        }
+        if (player === 1) {
+            $('.message').textContent = "Röds tur...";
+        }
+        if (player === 2) {
+            $('.message').textContent = "Guls tur...";
+        }
 
-             if (player < 1 || player > 2 || player % 1 != 0){
-                 throw (new Error("player must be 1 or 2"));
-             }
-             if (player === 1) {
-                 $('.message').textContent = "Röds tur...";
-             }
-             if (player === 2) {
-                 $('.message').textContent = "Guls tur...";
-             }
-             
-         }*/
-
+    }
+        /*
     tellTurn(player) {
         if (player !== 1 && player !== 2) {
 
@@ -34,7 +35,8 @@ class Game {
             player === 2 ? 'Guls  tur.' :
             "...";
 
-    }
+    } */
+    
     over(won) {
 
         if (won < 1 || won > 2 || won != "draw") {
@@ -49,13 +51,13 @@ class Game {
         if (won === 2) {
             $('.message').textContent = "Gul vann!";
         }
-        /*
+        
         let btn = document.createElement('button');
         btn.className = 'again';
         btn.textContent = 'Spela igen';
         btn.setAttribute('type', 'button');
         $('.message').appendChild(btn);
-        */ //Not done, finishing later
+        
     }
 
     addEventListener() {
