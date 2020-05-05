@@ -3,8 +3,8 @@ Feature: Play Connect 4
   I want to play the game on my screen with my friends
   So that I don't need to buy it.
 
-  # Some random scenarios (out of the many needed)
-  # (these have no When - but there will be plenty that have)
+  #Some random scenarios (out of the many needed)
+  #(these have no When - but there will be plenty that have)
 
   Scenario: A new Game creates a new board
     Given that a new Game is created

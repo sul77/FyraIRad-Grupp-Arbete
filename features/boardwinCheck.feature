@@ -5,7 +5,6 @@ Feature: Check who won or if it was a draw
   draw would make it easier for the players to determine the outcome of a game
 
   Scenario: One of the two players has won the game
-    Given that a board has been created
     When one of the players has won a game session
     Then winCheck method should return an object
     And the object should contain the property "winner" with the value set to the winner (1 or 2)

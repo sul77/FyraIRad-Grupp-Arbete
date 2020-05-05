@@ -5,7 +5,7 @@ module.exports = function () {
   let addEventListenerWasCalled = false;
   let startWasCalled = false;
 
-  class FakeGame extends Game {
+  class FakeGame2 extends Game {
 
     addEventListener() {
       addEventListenerWasCalled = true;
@@ -17,8 +17,8 @@ module.exports = function () {
 
   }
 
-  this.When(/^we create a new instance of Game$/, function () {
-    new FakeGame();
+  this.When(/^we create a new instance of class Game$/, function () {
+    new FakeGame2();
   });
 
   this.Then(/^the method addEventListener should be called first$/, function () {

@@ -4,17 +4,41 @@ require('./_include-all')();
 
 module.exports = function () {
 
-  let game;
-  let board;
+  // Create a subclass of Game
+  // So that we can override/change the methods
+  // we want to fake methods that let us test
+  // if they were called
 
+  let addEventListenerCalled = false;
+  let startCalled = false;
+
+  class TestGame extends Game {
+
+    // Until we have written any methods here
+    // TestGame will work exactly as game
+
+    //but we can override whatever methods we want
+    //in order to be able to test things
+
+    addEventListener() {
+      addEventListenerCalled = true;
+    }
+
+    start() {
+      startCalled = true;
+    }
+
+  }
+  let testGame;
+ 
   this.Given(/^that a new Game is created$/, function () {
-    game = new Game();
+    new TestGame();
   });
 
   this.Then(/^it should create a new Board$/, function () {
-    expect(game.board).to.be.an.instanceof(Board,
-      'game.board is not an instance of Board'
-    );
+    expect(addEventListenerCalled,
+        'The method addEventListener was not called by the constructor in Game'
+      ).to.be.true;
   });
 
   this.Given(/^that a new Board is created$/, function () {
@@ -37,4 +61,13 @@ module.exports = function () {
     );
     makeaMove = false;
   });
+
+  this.Then(/^the board shall have a bricka on its board$/, function () {
+
+  });
+
+  this.Then(/^I should get a message that red player has played\.$/, function () {
+
+  });
+
 }
