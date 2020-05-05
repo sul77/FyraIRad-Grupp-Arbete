@@ -1,4 +1,4 @@
-require('./_include-all')();
+/*require('./_include-all')();
 
 module.exports = function () {
 
@@ -33,3 +33,4 @@ module.exports = function () {
     ).to.be.true;
   });
 }
+*/
