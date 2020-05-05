@@ -36,20 +36,23 @@ class Game {
 
     over(won) {
 
-        if (won < 1 || won > 2 || won != "draw") {
-            throw (new Error('won must be "draw", 1 or 2'));
+        if (won !== "draw" && won !== 1 && won !== 2) throw (Error('player must be 1 or 2')); {
+
         }
-        if (won = "draw") {
-            $('.message').textContent = "Det blev oavgjort!";
-        }
-        if (won === 1) {
-            $('.message').textContent = "Röd vann!";
-        }
-        if (won === 2) {
-            $('.message').textContent = "Gul vann!";
-        }
+        //Visar färg på den spelare som vinnar eller om det blir oavgjort.
+        $('.message').innerHTML = won === "draw" ? "Det blev oavgjort!" :
+            won === 2 ? "Gul vann!" :
+            won === 1 ? "Röd vann!" :
+            "";
+
+        let $button = document.createElement('button');
+        $button.className = 'Spela';
+        $button.innerHTML = ' Spela igen';
+        $('.message').append($button);
 
     }
+
+
 
     addEventListener() {
         let self = this;
