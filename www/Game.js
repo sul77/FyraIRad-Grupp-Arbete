@@ -48,13 +48,7 @@ class Game {
         if (won === 2) {
             $('.message').textContent = "Gul vann!";
         }
-        /*
-        let btn = document.createElement('button');
-        btn.className = 'again';
-        btn.textContent = 'Spela igen';
-        btn.setAttribute('type', 'button');
-        $('.message').appendChild(btn);
-        */ //Not done, finishing later
+
     }
 
     addEventListener() {
