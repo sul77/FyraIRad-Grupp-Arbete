@@ -28,8 +28,8 @@ class Game {
             throw (new Error('player must be 1 or 2'));
         }
         let $message = $('.message');
-        $message.innerHTML = player === 1 ? 'Röds tur.' :
-            player === 2 ? 'Guls  tur.' :
+        $message.innerHTML = player === 1 ? 'Röds tur...' :
+            player === 2 ? 'Guls  tur...' :
             "...";
 
     }

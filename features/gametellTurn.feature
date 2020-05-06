@@ -11,3 +11,20 @@ Feature: Game calls upon tellTurn and tellTurn runs
    Given that tellTurn has been called upon
    And player has the value zero
    Then tellTurn should throw error "player must be 1 or 2"
+
+   Scenario: tellTurn is called upon with value above 2
+   Given that player has the value three
+   Then tellTurn should throw error "player must be 1 or 2" also
+
+   Scenario: tellTurn is called upon with value 1.2
+   Given that player is has the decimal value "1.2"
+   Then tellTurn should also throw error "player must be 1 or 2"
+
+   Scenario: tellTurn changes css-class message to 'Röds tur...'
+   Given that player has the value one
+   Then css class should contain "Röds tur..."
+
+   Scenario: tellTurn changes css-class message to 'Guls tur...'
+   Given that player has the value two
+   Then css class should contain instead "Guls tur..."
+
