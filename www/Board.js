@@ -186,11 +186,14 @@ class Board {
     }
 
     markWin(combo) {
-
         for (let w of combo) {
             //check which tray corresponds to a position
             //and add it to win class
-            $(".board > div:nth-child(" + ((w[0] * 7) + (w[1] + 1)) + ")").classList.add('w');
+            for (let i = 0; i < this.matrix.length; i++) {
+                if (i = (w[0] * 7) + (w[1] + 1)) {
+                    $(".board > div:nth-child(" + ((w[0] * 7) + (w[1] + 1)) + ")").classList.add('w');
+                } else continue;
+            }
         }
     }
 
