@@ -57,7 +57,7 @@ class Game {
     addEventListener() {
         let self = this;
         $('.message').addEventListener("click", function(e) {
-            if (e.target.className == 'again') {
+            if (e.target.className == 'Spela') {
                 self.start();
             }
         });
