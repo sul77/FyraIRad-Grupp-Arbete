@@ -97,7 +97,7 @@ module.exports = function () {
     //Then css class should contain "Röds tur..."
     this.Then(/^css class should contain "([^"]*)"$/, function (redsTurn) {
         if (testGameRedsTurn.tellTurn(1)) {                                 //If testGameRedsTurn.tellTurn(1) is true
-            expect($('.message').innerHTML).to.not.include(redsTurn,        //expect css class message to contain/include "Röds tur...". If not;
+            expect($('.message').innerHTML).to.include(redsTurn,        //expect css class message to contain/include "Röds tur...". If not;
                 '".message"s innerHTML did not include "Röds tur..." '      //throw '".message"s innerHTML did not include "Röds tur..."'
             )
         }
@@ -110,13 +110,13 @@ module.exports = function () {
 
     //Given that player has the value 2
     this.Given(/^that player has the value two$/, function () {
-    //No reason to test since i send in value 1 into tellTurn in next step
+    //No reason to test since i send in value 2 into tellTurn in next step
     });
 
     //Then css class should contain instead "Guls tur..."
     this.Then(/^css class should contain instead "([^"]*)"$/, function (yellowsTurn) {
-        if (testGameYellowsTurn.tellTurn(2)) {                                  //If testGameYellowsTurn.tellTurn(1) is true
-            expect($('.message').innerHTML).to.not.include(yellowsTurn,         //expect css class message to contain/include "Guls tur...". If not;
+        if (testGameYellowsTurn.tellTurn(2)) {                                  //If testGameYellowsTurn.tellTurn(2) is true
+            expect($('.message').innerHTML).to.include(yellowsTurn,         //expect css class message to contain/include "Guls tur...". If not;
                 '".message"s innerHTML did not include "Guls tur..." '          //throw '".message"s innerHTML did not include "Guls tur..."'
             )
         }
